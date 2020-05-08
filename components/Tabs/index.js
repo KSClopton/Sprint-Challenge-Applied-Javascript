@@ -13,7 +13,7 @@ function makeTabs(topics){
 // const {}
     
 // create elements
-const topicTitle = document.querySelector('.title')
+const topicTitle = document.querySelector('.topics')
 const divTab1 = document.createElement('div')
 const divTab2 = document.createElement('div')
 const divTab3 = document.createElement('div')
@@ -27,11 +27,11 @@ topicTitle.appendChild(divTab3)
 topicTitle.appendChild(divTab4)
 topicTitle.appendChild(divTab5)
 // add classes
-divTab1.classList.add('tabs')
-divTab2.classList.add('tabs')
-divTab3.classList.add('tabs')
-divTab4.classList.add('tabs')
-divTab5.classList.add('tabs')
+divTab1.classList.add('tab')
+divTab2.classList.add('tab')
+divTab3.classList.add('tab')
+divTab4.classList.add('tab')
+divTab5.classList.add('tab')
 
 // add text content
 divTab1.textContent = topics.topics[0]
@@ -46,11 +46,11 @@ return topicTitle
 function getLambdaTimes(){
     axios.get('https://lambda-times-backend.herokuapp.com/topics')
         .then(response => {
-            const divTopics = document.querySelector('.topics')
+            
             topics = response.data
             lambdaTimes = makeTabs(topics)
             console.log(lambdaTimes)
-            divTopics.appendChild(lambdaTimes)
+            
             
         })
 }

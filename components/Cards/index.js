@@ -20,8 +20,10 @@
 // Use your function to create a card for each of the articles and add the card to the DOM.
 
 function makeCards(attrs){
+    
+    console.log(attrs)
+    
     // create elements 
-
     const card = document.createElement('div')
     const headLine = document.createElement('div')
     const author = document.createElement('div')
@@ -56,22 +58,40 @@ function makeCards(attrs){
 }
 
 function getArticles(){
-    axios.get('https://lambda-times-backend.herokuapp.com/articles')
-        .then(response => {
-            const cardsContainer = document.querySelector('.cards-container')
-            cards = response.data
-            for (const property in cards){
-                for(const language in property){
-                    for(let i = 0; i < language.length; i++){
-                        makeCards[language[i]]
-                    }
+    axios.get('https://lambda-times-backend.herokuapp.com/articles')  
+    .then(response => {
+        const cardsContainer = document.querySelector('.cards-container')
+        cards = response.data
+        console.log(cards)
+        const bootS = response.data.articles.bootstrap
+        const js = response.data.articles.javascript
+        const technology = response.data.articles.technology
+        const jQuery = response.data.articles.jquery
+        const nodeJS = response.data.articles.node
 
-            }
-        }
-            })
-            // const cardInfo = makeCards(cards)
-            // cardsContainer.appendChild(cardInfo)
-        }
+        bootS.forEach(item =>{
+            const cardInfo = makeCards(item)
+            cardsContainer.appendChild(cardInfo)
+        })
+        js.forEach(item =>{
+            const cardInfo = makeCards(item)
+            cardsContainer.appendChild(cardInfo)
+        })
+        technology.forEach(item =>{
+            const cardInfo = makeCards(item)
+            cardsContainer.appendChild(cardInfo)
+        })
+        jQuery.forEach(item =>{
+            const cardInfo = makeCards(item)
+            cardsContainer.appendChild(cardInfo)
+        })
+        nodeJS.forEach(item =>{
+            const cardInfo = makeCards(item)
+            cardsContainer.appendChild(cardInfo)
+        })
+        
+        })
+    }
 
 
 getArticles()
