@@ -20,8 +20,7 @@
 // Use your function to create a card for each of the articles and add the card to the DOM.
 
 function makeCards(attrs){
-
-    // create elements
+    // create elements 
 
     const card = document.createElement('div')
     const headLine = document.createElement('div')
@@ -47,9 +46,9 @@ function makeCards(attrs){
 
     // add text content and srcs
 
-    headLine.textContent = attrs.articles.headLine
-    image.src = attrs.articles.authorPhoto
-    authorName.textContent = `By ${attrs.articles.authorName}`  
+    headLine.textContent = attrs.headLine
+    image.src = attrs.authorPhoto
+    authorName.textContent = `By ${attrs.authorName}`  
 
     // return 
     return card
@@ -61,9 +60,18 @@ function getArticles(){
         .then(response => {
             const cardsContainer = document.querySelector('.cards-container')
             cards = response.data
-            const cardInfo = makeCards(cards)
-            cardsContainer.appendChild(cardInfo)
-        })
-}
+            for (const property in cards){
+                for(const language in property){
+                    for(let i = 0; i < language.length; i++){
+                        makeCards[language[i]]
+                    }
+
+            }
+        }
+            })
+            // const cardInfo = makeCards(cards)
+            // cardsContainer.appendChild(cardInfo)
+        }
+
 
 getArticles()
