@@ -8,8 +8,10 @@
 //  Each tab should look like this:
 //    <div class="tab">topic here</div>
 
-function makeTabs(attrs){
+function makeTabs(topics){
 
+// const {}
+    
 // create elements
 const topicTitle = document.querySelector('.title')
 const divTab1 = document.createElement('div')
@@ -32,11 +34,11 @@ divTab4.classList.add('tabs')
 divTab5.classList.add('tabs')
 
 // add text content
-divTab1.textContent = attrs
-divTab2.textContent = attrs
-divTab3.textContent = attrs
-divTab4.textContent = attrs
-divTab5.textContent = attrs
+divTab1.textContent = topics.topics[0]
+divTab2.textContent = topics.topics[1]
+divTab3.textContent = topics.topics[2]
+divTab4.textContent = topics.topics[3]
+divTab5.textContent = topics.topics[4]
 
 return topicTitle
 }
