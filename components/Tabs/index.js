@@ -7,3 +7,51 @@
 //
 //  Each tab should look like this:
 //    <div class="tab">topic here</div>
+
+function makeTabs(topics){
+
+// const {}
+    
+// create elements
+const topicTitle = document.querySelector('.topics')
+const divTab1 = document.createElement('div')
+const divTab2 = document.createElement('div')
+const divTab3 = document.createElement('div')
+const divTab4 = document.createElement('div')
+const divTab5 = document.createElement('div')
+
+// append to the existing title class
+topicTitle.appendChild(divTab1)
+topicTitle.appendChild(divTab2)
+topicTitle.appendChild(divTab3)
+topicTitle.appendChild(divTab4)
+topicTitle.appendChild(divTab5)
+// add classes
+divTab1.classList.add('tab')
+divTab2.classList.add('tab')
+divTab3.classList.add('tab')
+divTab4.classList.add('tab')
+divTab5.classList.add('tab')
+
+// add text content
+divTab1.textContent = topics.topics[0]
+divTab2.textContent = topics.topics[1]
+divTab3.textContent = topics.topics[2]
+divTab4.textContent = topics.topics[3]
+divTab5.textContent = topics.topics[4]
+
+return topicTitle
+}
+
+function getLambdaTimes(){
+    axios.get('https://lambda-times-backend.herokuapp.com/topics')
+        .then(response => {
+            
+            topics = response.data
+            lambdaTimes = makeTabs(topics)
+            console.log(lambdaTimes)
+            
+            
+        })
+}
+getLambdaTimes()
